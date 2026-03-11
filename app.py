@@ -10,7 +10,7 @@ NOTION_TOKEN = os.getenv("NOTION_TOKEN")
 DATABASE_ID = os.getenv("NOTION_DATABASE_ID")
 
 # 깃허브 액션에서 전달받을 커밋 메시지 (테스트 시에는 두 번째 인자값이 사용됨)
-COMMIT_MESSAGE = os.getenv("COMMIT_MESSAGE", "[TASK-1] #doing 테스트 커밋")
+COMMIT_MESSAGE = os.getenv("COMMIT_MESSAGE", "[MBC-2] #doing 테스트 커밋")
 
 # 2. 노션 API 설정
 headers = {

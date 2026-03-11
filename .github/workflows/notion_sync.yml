@@ -1,0 +1,20 @@
+name: Notion Sync
+on: [push] # 코드가 Push 될 때마다 실행
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install requests python-dotenv
+      - name: Run Update Script
+        env: # 깃허브 Secrets에서 값을 가져와 환경변수로 설정
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+        run: python app.py
